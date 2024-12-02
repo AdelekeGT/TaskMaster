@@ -1,12 +1,15 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import userRouter from './routes/userRoutes';
+import authRouter from './routes/authRoutes';
+import taskRouter from './routes/taskRoutes';
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 const connectDatabase = async () => {
     try {
@@ -23,11 +26,20 @@ const connectDatabase = async () => {
 
 connectDatabase();
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cookieParser());
+app.use('/api/v1', userRouter);
+app.use('/api/v1', authRouter);
+app.use('/api/v1', taskRouter);
 
 app.get('/', (request: Request, response: Response) => {
-    response.json('Test ok!');
+    response.json('Hello, TaskMaster API!');
 });
 
 app.listen(PORT, () => {

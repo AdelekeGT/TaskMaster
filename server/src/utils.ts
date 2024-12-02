@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs';
 
 /**
- * Encrypts user password sent from frontend register form
+ * Hashes user password sent from frontend register form
  * @param {String} password
  * @returns hashed password
  */
-function encryptPassword(password: string): string {
+function hashPassword(password: string): string {
     const salt = bcrypt.genSaltSync(10);
     return bcrypt.hashSync(password, salt);
 }
@@ -36,7 +36,7 @@ function validateEmail(email: string): boolean {
  * @returns {boolean} true if name is valid, false otherwise
  */
 function validateName(name: string): boolean {
-    const nameRegex = /^[a-zA-Z0-9]{8,}$/;
+    const nameRegex = /^[a-zA-Z0-9 ]{8,}$/;
     return nameRegex.test(name);
 }
 
@@ -51,7 +51,7 @@ function validatePassword(password: string): boolean {
 }
 
 export {
-    encryptPassword,
+    hashPassword,
     checkPassword,
     validateEmail,
     validateName,
