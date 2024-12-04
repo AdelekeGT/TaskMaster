@@ -5,13 +5,13 @@
             "src": "server/src/index.ts",
             "use": "@vercel/node",
             "config": {
-                "typescript": {
-                    "tsconfigPath": "./server/tsconfig.json"
-                }
+                "includeFiles": ["server/src/**/*"],
+                "excludeFiles": ["node_modules"],
+                "typescript": true
             }
         },
         {
-            "src": "client/**/*",
+            "src": "client/build/**/*",
             "use": "@vercel/static"
         }
     ],
@@ -19,6 +19,10 @@
         {
             "src": "/api/(.*)",
             "dest": "/server/dist/index.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/client/build/$1"
         }
     ]
 }
