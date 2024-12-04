@@ -2,12 +2,11 @@
     "version": 2,
     "builds": [
         {
-            "src": "server/src/index.ts",
+            "src": "server/dist/index.js",
             "use": "@vercel/node",
             "config": {
                 "includeFiles": ["server/src/**/*"],
-                "excludeFiles": ["node_modules"],
-                "typescript": true
+                "excludeFiles": ["node_modules"]
             }
         },
         {
