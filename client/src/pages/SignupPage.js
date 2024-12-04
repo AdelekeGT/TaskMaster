@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+import BASE_URL from '../utils/baseUrl';
 
 function SignupPage() {
     const [name, setName] = useState('');

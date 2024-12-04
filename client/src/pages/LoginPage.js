@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+import BASE_URL from '../utils/baseUrl';
 
 let errorTimeout;
 

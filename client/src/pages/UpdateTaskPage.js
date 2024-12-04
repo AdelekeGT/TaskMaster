@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from '../utils/axiosInstance';
-// import { useAuth } from '../context/AuthContext';
 
 const UpdateTaskPage = () => {
     const { taskId } = useParams();
@@ -49,7 +48,9 @@ const UpdateTaskPage = () => {
         setTask((prevTask) => ({ ...prevTask, [name]: value }));
     };
 
-    const updateTaskHandler = async () => {
+    const updateTaskHandler = async (event) => {
+        event.preventDefault();
+
         try {
             console.log(task);
             const response = await axios.put(`/user/task/${taskId}`, { ...task });

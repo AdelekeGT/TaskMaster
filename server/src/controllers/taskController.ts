@@ -125,6 +125,7 @@ const deleteUserTaskHandler: RequestHandler = async (
             userId: user.id,
         });
         console.log('Task deleted successfully', deletedTask);
+        response.status(200).json({ message: 'Task deleted successfully' });
     } catch (error: unknown) {
         if (error instanceof Error)
             return response.status(500).json({ error: error.message });

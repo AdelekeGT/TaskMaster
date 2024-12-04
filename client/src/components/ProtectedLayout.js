@@ -1,4 +1,4 @@
-import { Outlet} from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from '../utils/axiosInstance';
 
@@ -12,10 +12,10 @@ const ProtectedLayout = () => {
 
             if (response.status === 200) {
                 logout();
-                // navigate('/');
             }
         } catch (error) {
-            const errorMessage = error.response.data.message || error.request || error.message;
+            const errorMessage =
+                error.response.data.message || error.request || error.message;
             console.log(errorMessage);
         }
     };
@@ -24,7 +24,9 @@ const ProtectedLayout = () => {
         <div className='min-h-screen flex flex-col bg-gray-100'>
             {/*Header */}
             <header className='p-4 bg-blue-500 text-white flex justify-between items-center'>
-                <h1 className='text-xl font-bold'>TaskMaster</h1>
+                <Link className='text-xl font-bold' to='/dashboard'>
+                    TaskMaster
+                </Link>
                 <button
                     className='px-4 py-2 bg-red-500 rounded-lg text-white hover:bg-red-600'
                     onClick={logoutHandler}

@@ -14,7 +14,6 @@ const DashboardPage = () => {
         try {
             const response = await axios.get('/user/tasks');
             const { tasks } = response.data;
-            console.log('Fetched tasks: ', tasks);
             setTasks(tasks);
         } catch (error) {
             console.log('Error fetching tasks: ', error.message);
@@ -34,10 +33,7 @@ const DashboardPage = () => {
 
             if (response.status === 200) {
                 console.log('Task successfully deleted');
-                // setTasks((prevTasks) =>
-                //     prevTasks.filter((task) => task._id !== taskId)
-                // );
-                await getUserTasks();
+                setTasks(tasks.filter((task) => task._id !== taskId));
             } else {
                 setDeleteTaskErrorMessage(response.data.message);
                 clearTimeout(errorTimeout);

@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../utils/axiosInstance';
-// import { useAuth } from '../context/AuthContext';
 
 const AddTaskPage = () => {
-    // const { isAuthenticated } = useAuth();
     const [title, setTitle] = useState('');
     const [notes, setNotes] = useState('');
     const [priority, setPriority] = useState('');
@@ -12,40 +10,40 @@ const AddTaskPage = () => {
     const [addTaskErrorMessage, setAddTaskErrorMessage] = useState('');
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if (!isAuthenticated.isLoggedIn) {
-    //         navigate('/login');
-    //     }
-    // }, [isAuthenticated.isLoggedIn, navigate]);
-
     const inputTitleHandler = (event) => setTitle(event.target.value);
     const inputNotesHandler = (event) => setNotes(event.target.value);
     const inputPriorityHandler = (event) => setPriority(event.target.value);
     const inputDueDateHandler = (event) => setDueDate(event.target.value);
 
     const addTaskHandler = async () => {
-        const response = await axios.post('/user/task', {
-            title,
-            notes,
-            priority,
-            dueDate,
-        });
-
-        if (response.status === 201) {
-            console.log({
-                message: 'New task succesfully created',
-                task: response.data,
+        try {
+            const response = await axios.post('/user/task', {
+                title,
+                notes,
+                priority,
+                dueDate,
             });
-            navigate('/dashboard');
-        } else {
-            const errorMessage = response.data.message || response.data.error;
-            console.log(errorMessage);
 
-            if (response.data.message) {
-                setAddTaskErrorMessage(response.data.message);
+            if (response.status === 201) {
+                navigate('/dashboard');
             } else {
-                setAddTaskErrorMessage('Could not add task. Please try again.');
+                const errorMessage =
+                    response.data.message || response.data.error;
+                console.log(errorMessage);
+
+                if (response.data.message) {
+                    setAddTaskErrorMessage(response.data.message);
+                } else {
+                    setAddTaskErrorMessage(
+                        'Could not add task. Please try again.'
+                    );
+                }
             }
+        } catch (error) {
+            const errorMessage =
+                error.response.data.message || error.request || error.message;
+            console.log(errorMessage);
+            setAddTaskErrorMessage('Could not add task. Please try again');
         }
     };
 

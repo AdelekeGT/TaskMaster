@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# TaskMaster - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TaskMaster is a task management web application designed to help users create, manage, and track their tasks efficiently. This repository contains the frontend codebase, built with React and styled with Tailwind CSS, to provide an intuitive and responsive user interface.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **User Authentication**:
+  - Secure login and logout functionality.
+  - Persistent authentication using JWT stored in localStorage.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Dashboard**:
+  - View all user-created tasks.
+  - Search for tasks by title.
+  - Add, update, or delete tasks seamlessly.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Add Task**:
+  - Create new tasks with the following details:
+    - Title
+    - Notes/Description
+    - Priority Level (e.g., High, Medium, Low)
+    - Due date
 
-### `npm test`
+- **Update Task**:
+  - Edit existing tasks to update details like title, notes, or priority level.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Protected Routes**:
+  - Ensure that only authenticated users can access the dashboard, task creation, and update pages.
 
-### `npm run build`
+- **Responsive Design**:
+  - Mobile-first and fully responsive layout using Tailwind CSS.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React.js**: For building the user interface.
+- **React Router**: For navigation and route protection.
+- **Axios**: For HTTP requests to the backend.
+- **Tailwind CSS**: For modern and responsive styling.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Folder Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+src/
+├── components/        # Reusable UI components
+├── context/           # Context API for global state management
+├── pages/             # Main application pages (Dashboard, AddTask, UpdateTask)
+├── utils/             # Utility functions and axios instance
+├── App.js            # Main app component
+├── main.js           # Entry point
+└── index.css          # Tailwind CSS configuration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Node.js (v18 or higher)
+- npm or yarn
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+1. Clone the repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git clone https://github.com/AdelekeGT/taskmaster-frontend.git
+   cd taskmaster-frontend
+   ```
