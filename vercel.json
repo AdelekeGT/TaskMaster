@@ -2,15 +2,16 @@
     "version": 2,
     "builds": [
         {
-            "src": "server/dist/index.js",
+            "src": "server/src/index.ts",
             "use": "@vercel/node",
             "config": {
-                "includeFiles": ["server/src/**/*"],
-                "excludeFiles": ["node_modules"]
+                "typescript": {
+                "tsconfigPath": "./server/tsconfig.json"
             }
+      }
         },
         {
-            "src": "client/build/**/*",
+            "src": "client/**/*",
             "use": "@vercel/static"
         }
     ],
@@ -18,10 +19,6 @@
         {
             "src": "/api/(.*)",
             "dest": "/server/dist/index.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/client/build/$1"
         }
     ]
 }
