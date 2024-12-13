@@ -38,7 +38,8 @@ const connectDatabase = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 connectDatabase();
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://client-psi-orpin.vercel.app',
+    methods: ['GET', 'PUT', 'POST', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 200,
 };
